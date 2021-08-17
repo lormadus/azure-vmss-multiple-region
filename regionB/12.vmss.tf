@@ -1,7 +1,7 @@
 resource "azurerm_virtual_machine_scale_set" "user30vmss" {
 name = "user30vmss"
-location = azurerm_resource_group.user30-rg1.location
-resource_group_name = azurerm_resource_group.user30-rg1.name
+location = azurerm_resource_group.user30-rg2.location
+resource_group_name = azurerm_resource_group.user30-rg2.name
 
 upgrade_policy_mode = "Manual"
 
@@ -77,7 +77,7 @@ network_profile {
         name = "TestIPConfiguration"
         primary = true
         subnet_id = azurerm_subnet.user30-subnet1.id
-        load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.user30-bpepool.id]
+        load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.user30-bep.id]
         load_balancer_inbound_nat_rules_ids = [azurerm_lb_nat_pool.user30-lbnatpool.id]
     }
         network_security_group_id = azurerm_network_security_group.user30nsg.id
